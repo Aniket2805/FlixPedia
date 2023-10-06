@@ -53,6 +53,7 @@ const Header = () => {
             <li className='relative'><Link to='/movies/top_rated' className='lg:px-2'>Top Rated</Link></li>
             <li className='relative'><Link to='/movies/popular' className='lg:px-2'>Popular</Link></li>
             <li className='relative'><Link to='/movies/upcoming' className='lg:px-2'>Upcoming</Link></li>
+            <li className='relative'><Link to='/movies/watchlist' className='lg:px-2'>Watchlist</Link></li>
           </ul>
         </div>
       </div>
