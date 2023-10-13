@@ -25,7 +25,7 @@ const Feed = () => {
                         return (
                             <div className='text-white' key={movie?.id}>
                                 <Link to={`/movie/${movie?.id}`}>
-                                    <div className='h-[280px] sm:h-full lg:h-[600px]'>
+                                    <div className='h-[50vh] sm:h-[70vh] lg:h-[85vh]'>
                                         <img className='m-auto block w-[100%] h-full' src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`} />
                                     </div>
                                     <div className='absolute p-10 md:p-20 bottom-0 md:h-[70%] flex flex-col w-[100%] justify-end items-start text-left hover:opacity-100' style={{ backgroundImage: "linear-gradient(rgb(0,0,0,0), rgb(0,0,0,1))", opacity: "1", transition: "opacity .3s"}}>
