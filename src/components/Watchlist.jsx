@@ -43,7 +43,7 @@ const Watchlist = () => {
     </div>
   ) : (
     <div className="h-[90vh] flex justify-center items-center">
-      <h1 className="text-black/80 text-5xl font-extrabold font-serif">
+      <h1 className="text-black/80 text-3xl sm:text-5xl font-extrabold font-serif text-center">
         Watchlist is empty
       </h1>
     </div>
