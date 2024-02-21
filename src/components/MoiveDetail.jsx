@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import Movie from "./Movie";
 const MoiveDetail = () => {
-  const { id } = useParams();
   const { setloading } = useContext(Context);
   const [movieData, setMovieData] = useState();
   const [similarmovieData, setsimilarMovieData] = useState();

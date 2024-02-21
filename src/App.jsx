@@ -7,7 +7,6 @@ import Feed from "./components/Feed";
 import CategoryPage from "./components/CategoryPage";
 import MoiveDetail from "./components/MoiveDetail";
 import SearchResultPage from "./components/SearchResultPage";
-import Watchlist from "./components/Watchlist";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import SignIn from "./components/SignIn";
@@ -39,7 +38,6 @@ function App() {
             <Route path="/movie/:id" element={<MoiveDetail />}></Route>
             <Route path="/signin" element={<SignIn />}></Route>
             <Route path="/signup" element={<SignUp />}></Route>
-            <Route path="/movies/watchlist" element={<Watchlist />}></Route>
           </Routes>
           <Copyright className="py-3 text-center text-base sm:text-lg font-semibold"></Copyright>
         </div>
