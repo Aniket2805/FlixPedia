@@ -5,15 +5,14 @@ import "./index.css";
 import { AppContext } from "./context/contextAPI";
 import Feed from "./components/Feed";
 import SearchResultPage from "./components/SearchResultPage";
-import Watchlist from "./components/Watchlist";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import SearchResultPage from "./components/SearchResultPage";
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
 import Copyright from "./components/Copyright";
 import About from "./components/About";
 import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 function App() {
   return (
     <AppContext>
@@ -39,7 +38,6 @@ function App() {
             ></Route>
             <Route path="/signin" element={<SignIn />}></Route>
             <Route path="/signup" element={<SignUp />}></Route>
-            <Route path="/movies/watchlist" element={<Watchlist />}></Route>
           </Routes>
           <Footer></Footer>
           <Copyright className="py-3 text-center text-base sm:text-lg font-semibold"></Copyright>
