@@ -34,7 +34,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const defaultTheme = createTheme();
 export default function SignUp() {
-  const { loading, setloading } = useContext(Context);
+  const { setloading } = useContext(Context);
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
   const [email, setEmail] = useState("");
