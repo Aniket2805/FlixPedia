@@ -4,7 +4,10 @@ import Header from "./components/Header";
 import "./index.css";
 import { AppContext } from "./context/contextAPI";
 import Feed from "./components/Feed";
-import Footer from "./components/Footer";
+import CategoryPage from "./components/CategoryPage";
+import MoiveDetail from "./components/MoiveDetail";
+import SearchResultPage from "./components/SearchResultPage";
+import Watchlist from "./components/Watchlist";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import SearchResultPage from "./components/SearchResultPage";
@@ -40,8 +43,7 @@ function App() {
             ></Route>
             <Route path="/signin" element={<SignIn />}></Route>
             <Route path="/signup" element={<SignUp />}></Route>
-            <Route path="/product/:id" element={<ProductDetail />}></Route>
-            <Route path="/cart" element={<Cart />}></Route>
+            <Route path="/movies/watchlist" element={<Watchlist />}></Route>
           </Routes>
           <Footer></Footer>
           <Copyright className="py-3 text-center text-base sm:text-lg font-semibold"></Copyright>
