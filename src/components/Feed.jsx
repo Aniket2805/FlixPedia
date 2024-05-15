@@ -66,7 +66,6 @@ const Feed = () => {
     fetchData("men summer collection");
     fetchData("women summer collection");
   }, []);
-
   return (
     <div>
       <div>

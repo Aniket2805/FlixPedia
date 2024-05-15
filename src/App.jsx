@@ -4,20 +4,16 @@ import Header from "./components/Header";
 import "./index.css";
 import { AppContext } from "./context/contextAPI";
 import Feed from "./components/Feed";
-import CategoryPage from "./components/CategoryPage";
-import MoiveDetail from "./components/MoiveDetail";
 import SearchResultPage from "./components/SearchResultPage";
 import Watchlist from "./components/Watchlist";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import SearchResultPage from "./components/SearchResultPage";
-import ProductDetail from "./components/ProductDetail";
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
 import Copyright from "./components/Copyright";
 import About from "./components/About";
 import Contact from "./components/Contact";
-import Cart from "./components/Cart";
 function App() {
   return (
     <AppContext>
