@@ -19,7 +19,6 @@ import { app, auth } from "../context/firebaseConfig";
 import { Context } from "../context/contextAPI";
 import { FcGoogle } from "react-icons/fc";
 import { ImFacebook } from "react-icons/im";
-import { FaTwitter } from "react-icons/fa6";
 import { RiTwitterFill } from "react-icons/ri";
 
 import {
@@ -35,7 +34,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const defaultTheme = createTheme();
 export default function SignUp() {
-  const { loading, setloading } = useContext(Context);
+  const { setloading } = useContext(Context);
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
   const [email, setEmail] = useState("");
