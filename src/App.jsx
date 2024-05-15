@@ -4,15 +4,17 @@ import Header from "./components/Header";
 import "./index.css";
 import { AppContext } from "./context/contextAPI";
 import Feed from "./components/Feed";
-import CategoryPage from "./components/CategoryPage";
-import MoiveDetail from "./components/MoiveDetail";
-import SearchResultPage from "./components/SearchResultPage";
-import Watchlist from "./components/Watchlist";
+import Footer from "./components/Footer";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import SearchResultPage from "./components/SearchResultPage";
+import ProductDetail from "./components/ProductDetail";
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
 import Copyright from "./components/Copyright";
+import About from "./components/About";
+import Contact from "./components/Contact";
+import Cart from "./components/Cart";
 function App() {
   return (
     <AppContext>
@@ -20,27 +22,28 @@ function App() {
         <div className="flex flex-col h-full">
           <ToastContainer
             position="bottom-right"
-            autoClose={5000}
+            autoClose={3000}
             hideProgressBar={false}
             newestOnTop={false}
             closeOnClick
             rtl={false}
             pauseOnFocusLoss
-            theme="dark"
           />
           <Header></Header>
           <Routes>
             <Route path="/" element={<Feed />}></Route>
-            <Route path="/movies/:category" element={<CategoryPage />}></Route>
+            <Route path="/aboutus" element={<About />}></Route>
+            <Route path="/contactus" element={<Contact />}></Route>
             <Route
               path="/searchResult/:searchQuery"
               element={<SearchResultPage />}
             ></Route>
-            <Route path="/movie/:id" element={<MoiveDetail />}></Route>
             <Route path="/signin" element={<SignIn />}></Route>
             <Route path="/signup" element={<SignUp />}></Route>
-            <Route path="/movies/watchlist" element={<Watchlist />}></Route>
+            <Route path="/product/:id" element={<ProductDetail />}></Route>
+            <Route path="/cart" element={<Cart />}></Route>
           </Routes>
+          <Footer></Footer>
           <Copyright className="py-3 text-center text-base sm:text-lg font-semibold"></Copyright>
         </div>
       </BrowserRouter>

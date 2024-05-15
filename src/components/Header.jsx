@@ -2,18 +2,18 @@ import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../context/contextAPI";
 import Loader from "../shared/loader";
-import Logo from "../images/Logo.png";
-import Logo2 from "../images/Logo2.png";
 import { IoIosSearch } from "react-icons/io";
 import { RiMenuUnfoldFill, RiArrowDropDownLine } from "react-icons/ri";
 import { CgClose, CgProfile } from "react-icons/cg";
 import { Dropdown } from "./Dropdown";
-import { BsBookmarkStar } from "react-icons/bs";
-import { ImHome3, ImProfile } from "react-icons/im";
+import { ImHome3 } from "react-icons/im";
 import { TbLogout } from "react-icons/tb";
-import { BiCategoryAlt, BiLogOut } from "react-icons/bi";
-import { IoTime } from "react-icons/io5";
-import { MdOutlineCategory } from "react-icons/md";
+import { BiLogOut } from "react-icons/bi";
+import Logo from "/src/images/Logo.png";
+import Logo2 from "/src/images/Logo2.png";
+import { MdOutlinePermPhoneMsg } from "react-icons/md";
+import { IoIosPeople } from "react-icons/io";
+import { FaCartShopping } from "react-icons/fa6";
 import "../index.css";
 import { auth } from "../context/firebaseConfig";
 import { signOut } from "firebase/auth";
@@ -21,7 +21,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const Header = () => {
   const [searchQuery, setsearchQuery] = useState("");
-  const { loading, setloading, setSelectCategories } = useContext(Context);
+  const { loading, setloading } = useContext(Context);
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
   const notify = (msg) => {
@@ -33,6 +33,7 @@ const Header = () => {
       searchQuery?.length > 0
     ) {
       navigate(`/searchResult/${searchQuery}`);
+      setsearchQuery("");
     }
   };
   const close = () => {
@@ -40,7 +41,7 @@ const Header = () => {
     document.getElementById("navbar").style.left = "-300px";
   };
   return (
-    <div className="flex justify-between text-xl sticky z-[999] top-0 left-0 items-center bg-black text-white px-2 md:px-16 py-3 shadow-2xl">
+    <div className="flex justify-between text-xl sticky z-[999] top-0 left-0 items-center bg-[#007276] text-white px-2 md:px-16 py-3 shadow-[0_5px_15px_#007276]">
       {loading && <Loader></Loader>}
       <div className="flex font-semibold lg:items-center flex-col lg:flex-row">
         <div className="flex items-center">
@@ -50,7 +51,7 @@ const Header = () => {
             onClick={() => {
               document.getElementById("navbar").style.left = "0px";
               document.getElementById("navbar").style.boxShadow =
-                "0 40px 60px rgb(65, 64, 64)";
+                "0 5px 15px #008593";
               document.getElementById("close").style.display = "flex";
             }}
           >
@@ -106,7 +107,6 @@ const Header = () => {
               <Link
                 to="/"
                 onClick={() => {
-                  setSelectCategories("now_playing");
                   close();
                 }}
                 className="px-2"
@@ -120,9 +120,9 @@ const Header = () => {
                 close();
               }}
             >
-              <MdOutlineCategory className="text-2xl" />
+              <IoIosPeople className="text-2xl" />
               <Link to="/movies/top_rated" className="px-2">
-                Top Rated
+                About Us
               </Link>
             </li>
             <li
@@ -131,9 +131,9 @@ const Header = () => {
                 close();
               }}
             >
-              <BiCategoryAlt className="text-2xl" />
-              <Link to="/movies/popular" className="px-2">
-                Popular
+              <MdOutlinePermPhoneMsg className="text-2xl" />
+              <Link to="/contactus" className="px-2">
+                Contact Us
               </Link>
             </li>
             <li
@@ -142,24 +142,14 @@ const Header = () => {
                 close();
               }}
             >
-              <IoTime className="text-2xl" />
-              <Link to="/movies/upcoming" className="px-2">
-                Upcoming
-              </Link>
-            </li>
-            {auth.currentUser != null && (
-              <li
-                className="relative flex items-center"
-                onClick={() => {
-                  close();
-                }}
+              <FaCartShopping className="text-2xl" />
+              <Link
+                to={auth.currentUser == null ? "/signin" : "/cart"}
+                className="px-2"
               >
-                <BsBookmarkStar className="text-2xl" />
-                <Link to="/movies/watchlist" className="px-2">
-                  Watchlist
-                </Link>
-              </li>
-            )}
+                Cart
+              </Link>
+            </li>
             {auth.currentUser == null ? (
               <li
                 className="relative flex items-center"
@@ -202,7 +192,7 @@ const Header = () => {
       <div className="flex">
         <div className="group flex h-8 md:h-10 md:ml-10 md:pl-5 bg-white/90 rounded-l-3xl group-focus-within:border-white md:group-focus-within:ml-5 md:group-focus-within:pl-0">
           <div className="w-10 items-center justify-center hidden group-focus-within:md:flex">
-            <IoIosSearch className="text-black text-xl"></IoIosSearch>
+            <IoIosSearch className="text-[#007276] text-xl"></IoIosSearch>
           </div>
           <input
             type="text"
@@ -224,18 +214,16 @@ const Header = () => {
           to={auth?.currentUser == null ? "/signin" : "/"}
           onClick={() => setOpen(false)}
         >
-          <span>
-            <ul className="dropdownItem flex items-center font-semibold my-2 cursor-pointer transition-colors hover:text-yellow-400">
-              <li className="text-3xl mr-1">
-                <CgProfile />
-              </li>
-              <li className="text-xl">
-                {auth?.currentUser == null
-                  ? "Login"
-                  : auth?.currentUser?.displayName}
-              </li>
-            </ul>
-          </span>
+          <ul className="dropdownItem flex items-center font-semibold my-2 cursor-pointer transition hover:text-pink-200">
+            <li className="text-3xl mr-1">
+              <CgProfile />
+            </li>
+            <li className="text-xl">
+              {auth?.currentUser == null
+                ? "Login"
+                : auth?.currentUser?.displayName}
+            </li>
+          </ul>
         </Link>
         <RiArrowDropDownLine
           onClick={() => setOpen(!open)}
@@ -245,20 +233,21 @@ const Header = () => {
           <Link to="/" onClick={() => setOpen(!open)}>
             <Dropdown img={<ImHome3 />} text="Home"></Dropdown>
           </Link>
-          <Link to="movies/top_rated" onClick={() => setOpen(!open)}>
-            <Dropdown img={<MdOutlineCategory />} text="Top Rated"></Dropdown>
+          <Link to="/aboutus" onClick={() => setOpen(!open)}>
+            <Dropdown img={<IoIosPeople />} text="About Us"></Dropdown>
           </Link>
-          <Link to="movies/popular" onClick={() => setOpen(!open)}>
-            <Dropdown img={<BiCategoryAlt />} text="Popular"></Dropdown>
+          <Link to="/contactus" onClick={() => setOpen(!open)}>
+            <Dropdown
+              img={<MdOutlinePermPhoneMsg />}
+              text="Contact Us"
+            ></Dropdown>
           </Link>
-          <Link to="movies/upcoming" onClick={() => setOpen(!open)}>
-            <Dropdown img={<IoTime />} text="Upcoming"></Dropdown>
+          <Link
+            to={auth.currentUser == null ? "/signin" : "/cart"}
+            onClick={() => setOpen(!open)}
+          >
+            <Dropdown img={<FaCartShopping />} text="Cart"></Dropdown>
           </Link>
-          {auth?.currentUser != null && (
-            <Link to="movies/watchlist" onClick={() => setOpen(!open)}>
-              <Dropdown img={<BsBookmarkStar />} text="Watchlist"></Dropdown>
-            </Link>
-          )}
           {auth?.currentUser != null ? (
             <Link
               to="/"

@@ -19,7 +19,6 @@ import { app, auth } from "../context/firebaseConfig";
 import { Context } from "../context/contextAPI";
 import { FcGoogle } from "react-icons/fc";
 import { ImFacebook } from "react-icons/im";
-import { FaTwitter } from "react-icons/fa6";
 import { RiTwitterFill } from "react-icons/ri";
 
 import {

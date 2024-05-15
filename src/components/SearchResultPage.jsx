@@ -1,52 +1,64 @@
-import React, { useContext, useState, useEffect } from 'react'
-import { fetchDataFromAPI } from "../utils/api"
-import { Context } from '../context/contextAPI';
-import { useParams } from 'react-router-dom';
-import SearchResultVideoCard from './SearchResultVideoCard';
-import Movie from './Movie';
+import React, { useContext, useState, useEffect } from "react";
+import { fetchDataFromAPI } from "../utils/api";
+import { Context } from "../context/contextAPI";
+import { useParams } from "react-router-dom";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+import Product from "./Product";
 const SearchResultPage = () => {
-    const { searchQuery } = useParams();
-    const { setloading } = useContext(Context);
-    const [searchResults, setSearchResults] = useState([])
-    useEffect(() => {
-        fetchSearchResult();
-    }, [searchQuery]);
-    const fetchSearchResult = () => {
-        setloading(true);
-        fetchDataFromAPI(`search/movie?query=${searchQuery}`).then((res) => {
-            console.log(res);
-            setSearchResults(res?.results);
-            setloading(false);
-        })
-    }
-    return (
-        <div className='lg:px-36 md:px-20 md:py-5'>
-            <div className='hidden md:flex flex-col'>
-                <h1 className='text-center text-black/70 md:text-4xl text-xl font-bold'>{"Showing Results for " + searchQuery}</h1>
-                {
-                    searchResults?.map((movie) => {
-                        return (
-                            movie?.backdrop_path && <SearchResultVideoCard key={movie?.id} movie={movie} />
-                        )
-                    })
-                }
-            </div>
-            <div className='flex flex-col md:hidden'>
-                <div className='grow overflow-y-auto text-white px-10 py-8 sm:px-20 sm:py-15 bg-black'>
-                    <h1 className='font-extrabold text-2xl md:text-3xl lg:text-5xl text-center pb-14'>{"Showing Results for " + searchQuery}</h1>
-                    <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-16 justify-center'>
-                        {
-                            searchResults?.map((movie) => {
-                                return (
-                                    movie?.backdrop_path && <Movie key={movie?.id} movie={movie}></Movie>
-                                )
-                            })
-                        }
-                    </div>
-                </div>
-            </div>
+  const { searchQuery } = useParams();
+  const { loading, setloading } = useContext(Context);
+  const [searchResults, setSearchResults] = useState([]);
+  useEffect(() => {
+    fetchSearchResult();
+  }, [searchQuery]);
+  const fetchSearchResult = () => {
+    setloading(true);
+    fetchDataFromAPI(`search?q=${searchQuery}&country=in&language=en&limit=52`)
+      .then((response) => {
+        setSearchResults(response?.data);
+        setloading(false);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+  return (
+    <div>
+      <section id="search-header" className="h-[30vh] md:h-[40vh]">
+        <h5 className="font-serif font text-2xl md:text-3xl lg:text-5xl text-center">
+          #Results for{" "}
+          <span className="text-[#ff0d00] font-mono font-bold">
+            {searchQuery}
+          </span>
+        </h5>
+      </section>
+      <section
+        id="product1"
+        className="py-[40px] px-0 sm:px-[20px] lg:px-[80px] text-center"
+      >
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 min-[1350px]:grid-cols-4 gap-8 sm:gap-16 justify-center">
+          <SkeletonTheme baseColor="#D0D4CA" highlightColor="#7D7C7C">
+            {loading
+              ? Array.from({ length: 50 }).map((_, index) => (
+                  <div className="flex justify-center">
+                    <Skeleton
+                      key={index}
+                      duration={2}
+                      borderRadius="1rem"
+                      width="16rem"
+                      height="25rem"
+                    ></Skeleton>
+                  </div>
+                ))
+              : searchResults?.map((item) => {
+                  return <Product key={item.product_id} product={item} />;
+                })}
+          </SkeletonTheme>
         </div>
-    )
-}
+      </section>
+    </div>
+  );
+};
 
-export default SearchResultPage
+export default SearchResultPage;
