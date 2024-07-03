@@ -37,14 +37,13 @@ Flixpedia is a movie search website that provides users with detailed informatio
 - Feel free to customize the content according to your project's specific details.
 
 ## Screenshots
-![1](https://github.com/Aniket2805/FlixPedia/assets/97465559/b43f8e43-d7cf-46a6-b680-f7b641ff7a45)
-![2](https://github.com/Aniket2805/FlixPedia/assets/97465559/b420fb78-60be-440f-83a6-1119ecee5c66)
-![3](https://github.com/Aniket2805/FlixPedia/assets/97465559/054b3000-55fa-4ddf-a0c1-ce8ea1d84a56)
-![4](https://github.com/Aniket2805/FlixPedia/assets/97465559/b5cb9245-4465-41a4-8e3d-48f62da01be3)
-![5](https://github.com/Aniket2805/FlixPedia/assets/97465559/14f57c9f-b978-4fb5-ac4b-2806907f8f47)
-![6](https://github.com/Aniket2805/FlixPedia/assets/97465559/22912a8a-b11e-4fa2-8f3d-2d89678054a3)
-![7](https://github.com/Aniket2805/FlixPedia/assets/97465559/31da26b1-9887-422c-8aff-e3bc9eb749b5)
-![8](https://github.com/Aniket2805/FlixPedia/assets/97465559/340f37bc-08ab-4dbd-aabd-28e5448e188b)
+
+![Screenshot 2024-07-03 134638](https://github.com/Aniket2805/FlixPedia/assets/97465559/a265998a-42d1-4df4-b7ac-04590c7d542b)
+![Screenshot 2024-07-03 134710](https://github.com/Aniket2805/FlixPedia/assets/97465559/55051f2c-459a-4f68-8269-0b9f64c85b57)
+![Screenshot 2024-07-03 134730](https://github.com/Aniket2805/FlixPedia/assets/97465559/b7e06df6-f51e-4ad8-8be0-bbb492ec1a47)
+![Screenshot 2024-07-03 134752](https://github.com/Aniket2805/FlixPedia/assets/97465559/f98bcb34-199b-4772-9811-d9e80b41d6e0)
+![Screenshot 2024-07-03 134813](https://github.com/Aniket2805/FlixPedia/assets/97465559/35000f27-1e61-4f43-a8e3-de5d8b372a2f)
+![Screenshot 2024-07-03 134847](https://github.com/Aniket2805/FlixPedia/assets/97465559/ed94c1e1-c395-4600-98e5-8e938c4eaa63)
 
 
 
